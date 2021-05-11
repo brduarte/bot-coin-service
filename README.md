@@ -1,1 +1,1 @@
-# My Finance API
+# Bit Bot Service
