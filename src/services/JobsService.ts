@@ -1,5 +1,5 @@
 import { getCustomRepository } from "typeorm";
-import { hash } from "bcrypt"
+import { hash } from "bcrypt";
 import { JobRepository } from "../repositorys/JobsRepository";
 
 interface IJobCreate {
@@ -8,17 +8,14 @@ interface IJobCreate {
 }
 
 class JobsService {
-
-  private jobRepository: JobRepository
+  private jobRepository: JobRepository;
   usersRepository: any;
-  
+
   constructor() {
-    this.jobRepository = getCustomRepository(JobRepository)
+    this.jobRepository = getCustomRepository(JobRepository);
   }
 
-  async create({ email, password }: IJobCreate) {
-
-  }
+  async create({ email, password }: IJobCreate) {}
 }
 
 export { JobsService };
