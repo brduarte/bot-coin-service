@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+
+  postgres:
+    image: postgres:13.1
+    container_name: 'airport-promo-db'
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_DATABASE:-chatnlv}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - ${DB_PORT:-5432}:5432
+    volumes:
+      - ./.docker/postgres:/var/lib/postgresql/data
+    networks:
+      - network-nlv-chat
+
+networks:
+    network-nlv-chat:
+      driver: bridge
+      
