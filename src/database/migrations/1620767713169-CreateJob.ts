@@ -16,6 +16,10 @@ export class CreateJob1620767713169 implements MigrationInterface {
             type: "varchar",
           },
           {
+            name: "currency_pair",
+            type: "varchar",
+          },
+          {
             name: "created_at",
             type: "datetime",
             default: 'now()'

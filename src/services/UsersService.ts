@@ -1,5 +1,5 @@
 import { getCustomRepository } from "typeorm";
-import { UsersRepository } from "../repositorys/UsersRepository";
+import { UsersRepository } from "../repositorys/JobsRepository";
 import { hash } from "bcrypt"
 
 interface IUserCreate {
