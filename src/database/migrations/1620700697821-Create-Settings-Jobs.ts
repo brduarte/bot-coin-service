@@ -17,6 +17,6 @@ export class CreateSettingsJobs1620700697821 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-      queryRunner.dropTable('settings_jobs')
+    queryRunner.dropTable("settings_jobs");
   }
 }
