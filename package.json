@@ -1,5 +1,5 @@
 {
-  "name": "my-finance-api",
+  "name": "bit-bot-service",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,9 +15,9 @@
   "author": "brduarte",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/brduarte/NLVChat/issues"
+    "url": "https://github.com/brduarte/bit-bot-service/issues"
   },
-  "homepage": "https://github.com/brduarte/NLVChat#readme",
+  "homepage": "https://github.com/brduarte/bit-bot-service#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "dotenv": "^9.0.2",
