@@ -1,23 +1,23 @@
-version: '3.1'
+version: "3.1"
 
 services:
 
-  postgres:
-    image: postgres:13.1
-    container_name: 'airport-promo-db'
+  mysql:
+    image: mysql:8.0.25
+    command: --default-authentication-plugin=mysql_native_password
     environment:
-      POSTGRES_USER: ${DB_USERNAME:-postgres}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
-      POSTGRES_DB: ${DB_DATABASE:-chatnlv}
-      PGDATA: /var/lib/postgresql/data/pgdata
-    ports:
-      - ${DB_PORT:-5432}:5432
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bitbot
+      MYSQL_USER: bitbot
+      MYSQL_PASSWORD: bitbot
     volumes:
-      - ./.docker/postgres:/var/lib/postgresql/data
+      - ./.docker/db/bddata:/var/lib/mysql
+      - ./.docker/db/bdimport:/docker-entrypoint-initdb.d
+    ports:
+      - 3309:3306
     networks:
-      - network-nlv-chat
+      - mynetwork
 
 networks:
-    network-nlv-chat:
-      driver: bridge
-      
+  mynetwork:
+    driver: bridge
