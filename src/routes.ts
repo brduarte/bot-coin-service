@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { UsersController } from "./controllers/UsersController";
+import { JobsController } from "./controllers/JobsController";
 
 const routes = Router();
 
-routes.post("/users", UsersController.create);
+routes.post("/jobs", JobsController.create);
 
 export { routes };

@@ -9,8 +9,8 @@ class Job {
   @Column()
   name: string;
 
-  @Column({ select: false })
-  currency_pair: string;
+  @Column({ name: 'currency_pair' })
+  currencyPair: string;
 
   @CreateDateColumn()
   created_at: Date;

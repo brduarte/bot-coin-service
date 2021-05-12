@@ -1,4 +1,4 @@
-import { EntityRepository, Repository } from "typeorm";
+import { EntityRepository, Repository, Transaction } from "typeorm";
 import { Job } from "../database/entities/Job";
 
 @EntityRepository(Job)

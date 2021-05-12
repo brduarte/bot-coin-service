@@ -27,6 +27,7 @@ export class SchedulesJobs1620768602670 implements MigrationInterface {
           {
             name: "updated_at",
             type: "datetime",
+            isNullable: true
           },
         ],
         foreignKeys: [

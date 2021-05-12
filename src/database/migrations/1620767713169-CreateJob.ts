@@ -27,6 +27,7 @@ export class CreateJob1620767713169 implements MigrationInterface {
           {
             name: "updated_at",
             type: "datetime",
+            isNullable: true
           },
         ],
       })
