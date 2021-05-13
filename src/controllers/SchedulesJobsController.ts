@@ -1,13 +1,13 @@
 import { Response, Request } from "express";
-import { JobsServices } from "../services/JobsServices";
+import { SchedulesJobsService } from "../services/SchedulesJobsService";
 import { CronJobService } from "../services/CronJobService";
 
-class JobsController {
+class SchedulesJobsController {
   static async create(request: Request, response: Response): Promise<Response> {
     try {
       const { name, currencyPair, frequency } = request.body;
 
-      const jobsServices = new JobsServices();
+      const jobsServices = new SchedulesJobsService();
       const scheduleJob = await jobsServices.create({
         name: name,
         currencyPair: currencyPair,
@@ -29,4 +29,4 @@ class JobsController {
   }
 }
 
-export { JobsController };
+export { SchedulesJobsController };

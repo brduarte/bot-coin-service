@@ -8,7 +8,7 @@ interface IJobCreate {
   frequency: number;
 }
 
-class JobsServices {
+class SchedulesJobsService {
   private jobRepository: JobRepository;
   private schedulesJobsRepository: SchedulesJobsRepository;
 
@@ -37,4 +37,4 @@ class JobsServices {
   }
 }
 
-export { JobsServices };
+export { SchedulesJobsService };
