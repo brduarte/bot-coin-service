@@ -10,9 +10,6 @@ class ScheduleJob {
   @Column()
   frequency: number;
 
-  @CreateDateColumn()
-  created_at: Date;
-
   @Column({select: false})
   job_id: string
 
@@ -22,6 +19,9 @@ class ScheduleJob {
 
   @CreateDateColumn()
   updated_at: Date;
+
+  @CreateDateColumn()
+  created_at: Date;
 
   constructor() {
     if (!this.id) {

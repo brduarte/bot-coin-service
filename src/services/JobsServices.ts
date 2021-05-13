@@ -1,5 +1,4 @@
 import { getCustomRepository, getManager } from "typeorm";
-import { ScheduleJob } from "../database/entities/ScheduleJob";
 import { JobRepository } from "../repositorys/JobsRepository";
 import { SchedulesJobsRepository } from "../repositorys/SchedulesJobsRepository";
 
@@ -18,7 +17,7 @@ class JobsServices {
     this.schedulesJobsRepository = getCustomRepository(SchedulesJobsRepository);
   }
 
-  async create({ name, currencyPair, frequency }: IJobCreate) {
+  async create({ name, currencyPair, frequency }: IJobCreate)  {
     const job = this.jobRepository.create({
       name,
       currencyPair,

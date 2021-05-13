@@ -1,5 +1,6 @@
 import { Response, Request } from "express";
 import { JobsServices } from "../services/JobsServices";
+import { CronJobService } from "../services/CronJobService";
 
 class JobsController {
   static async create(request: Request, response: Response): Promise<Response> {
@@ -7,13 +8,21 @@ class JobsController {
       const { name, currencyPair, frequency } = request.body;
 
       const jobsServices = new JobsServices();
-      const user = await jobsServices.create({
+      const scheduleJob = await jobsServices.create({
         name: name,
         currencyPair: currencyPair,
         frequency,
       });
 
-      return response.json(user);
+      CronJobService.start({
+        frequency: scheduleJob.frequency,
+        currencyPair: scheduleJob.job.currencyPair,
+      });
+
+      return response.json({
+        scheduleJob,
+        started: true
+      });
     } catch (error) {
       return response.json(error);
     }
