@@ -43,7 +43,7 @@ class CronJobServices {
     const apiPoloniexServices = new ApiPoloniexServices();
     const ticker = await apiPoloniexServices.returnTicker();
     console.log(ticker[currencyPair]);
-    console.log(`Você esta monitorando esta moeda===>`, currencyPair);
+    console.log(`Você esta monitorando essa moeda===>`, currencyPair);
     console.log(new Date());
   }
 }
