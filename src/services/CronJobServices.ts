@@ -1,4 +1,6 @@
-import { CronJob } from "cron";
+import { CronJob, job } from "cron";
+import { getCustomRepository } from "typeorm";
+import { JobRepository } from "../repositorys/JobsRepository";
 
 interface ICreateJob {
   frequency: Number;
@@ -10,12 +12,8 @@ class CronJobServices {
     var job = new CronJob(
       `0 ${frequency}/1 * * * *`,
       function () {
-        console.log(
-          `Você esta monitorando esta moeda===>`,
-          currencyPair
-        );
+        console.log(`Você esta monitorando esta moeda===>`, currencyPair);
         console.log(new Date());
-        
       },
       null,
       true
@@ -25,9 +23,23 @@ class CronJobServices {
     return job;
   }
 
-  static toRecoverJobs() {
-   
+  static async toRecoverJobs() {
+    const jobRepository = getCustomRepository(JobRepository);
+    const jobs = await jobRepository.find({ relations: ["scheduleJob"] });
 
+    if (!jobs.length) {
+      return false;
+    }
+
+    jobs.forEach((job) => {
+      this.start({
+        frequency: job.scheduleJob.frequency,
+        currencyPair: job.currencyPair,
+      });
+      console.log('JOB STARTED ==>', job.currencyPair);
+    });
+
+    return true;
   }
 }
 
