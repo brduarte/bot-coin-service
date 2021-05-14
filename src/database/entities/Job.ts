@@ -1,5 +1,13 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuid } from "uuid";
+import { ScheduleJob } from "./ScheduleJob";
 
 @Entity("jobs")
 class Job {
@@ -9,8 +17,12 @@ class Job {
   @Column()
   name: string;
 
-  @Column({ name: 'currency_pair' })
+  @Column({ name: "currency_pair" })
   currencyPair: string;
+
+  @JoinColumn({name: 'schedule_job_id'})
+  @OneToOne(() => ScheduleJob, scheduleJob => scheduleJob.job)
+  scheduleJob: ScheduleJob;
 
   @CreateDateColumn()
   created_at: Date;

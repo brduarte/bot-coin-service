@@ -1,30 +1,34 @@
 import { Response, Request } from "express";
-import { SchedulesJobsService } from "../services/SchedulesJobsService";
-import { CronJobService } from "../services/CronJobService";
+import { JobsServices } from "../services/JobsServices";
+import { CronJobServices } from "../services/CronJobServices";
 
 class SchedulesJobsController {
   static async create(request: Request, response: Response): Promise<Response> {
     try {
       const { name, currencyPair, frequency } = request.body;
 
-      const jobsServices = new SchedulesJobsService();
-      const scheduleJob = await jobsServices.create({
+      const jobsServices = new JobsServices();
+      const job = await jobsServices.create({
         name: name,
         currencyPair: currencyPair,
         frequency,
       });
 
-      CronJobService.start({
-        frequency: scheduleJob.frequency,
-        currencyPair: scheduleJob.job.currencyPair,
+      CronJobServices.start({
+        frequency: job.scheduleJob.frequency,
+        currencyPair: job.currencyPair,
       });
 
       return response.json({
-        scheduleJob,
-        started: true
+        job,
+        started: true,
       });
     } catch (error) {
-      return response.json(error);
+      return response
+        .json({
+          message: error.message,
+        })
+        .status(500);
     }
   }
 }

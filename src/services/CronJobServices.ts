@@ -5,13 +5,13 @@ interface ICreateJob {
   currencyPair: String;
 }
 
-class CronJobService {
+class CronJobServices {
   static start({ frequency, currencyPair }: ICreateJob): CronJob {
     var job = new CronJob(
       `0 ${frequency}/1 * * * *`,
       function () {
         console.log(
-          `Você esta monitorando esta moeda===> ${currencyPair}`,
+          `Você esta monitorando esta moeda===> `,
           currencyPair
         );
       },
@@ -29,4 +29,4 @@ class CronJobService {
   }
 }
 
-export { CronJobService };
+export { CronJobServices };

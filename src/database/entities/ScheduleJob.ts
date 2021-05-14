@@ -1,4 +1,10 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToOne,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Job } from "./Job";
 
@@ -10,12 +16,8 @@ class ScheduleJob {
   @Column()
   frequency: number;
 
-  @Column({select: false})
-  job_id: string
-
-  @JoinColumn({ name: "job_id" })
-  @ManyToOne(() => Job)
-  job: Job
+  @OneToOne(() => Job, (job) => job.scheduleJob)
+  job: Job;
 
   @CreateDateColumn()
   updated_at: Date;

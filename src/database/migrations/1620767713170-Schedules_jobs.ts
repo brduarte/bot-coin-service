@@ -11,10 +11,7 @@ export class SchedulesJobs1620768602670 implements MigrationInterface {
             type: "varchar",
             isPrimary: true,
           },
-          {
-            name: "job_id",
-            type: "varchar",
-          },
+       
           {
             name: "frequency",
             type: "float",
@@ -28,13 +25,6 @@ export class SchedulesJobs1620768602670 implements MigrationInterface {
             name: "updated_at",
             type: "datetime",
             isNullable: true
-          },
-        ],
-        foreignKeys: [
-          {
-            referencedTableName: "jobs",
-            referencedColumnNames: ["id"],
-            columnNames: ["job_id"],
           },
         ],
       })

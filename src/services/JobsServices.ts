@@ -8,7 +8,7 @@ interface IJobCreate {
   frequency: number;
 }
 
-class SchedulesJobsService {
+class JobsServices {
   private jobRepository: JobRepository;
   private schedulesJobsRepository: SchedulesJobsRepository;
 
@@ -17,24 +17,32 @@ class SchedulesJobsService {
     this.schedulesJobsRepository = getCustomRepository(SchedulesJobsRepository);
   }
 
-  async create({ name, currencyPair, frequency }: IJobCreate)  {
-    const job = this.jobRepository.create({
-      name,
-      currencyPair,
-    });
+  async create({ name, currencyPair, frequency }: IJobCreate) {
+    const jobExists = await this.jobRepository.findJobByCurrencyAndFrequency({currencyPair,frequency})
+
+    if (jobExists) {
+      throw new Error(
+        "An appointment with this period already exists for that currency"
+      );
+    }
 
     const scheduleJob = this.schedulesJobsRepository.create({
       frequency,
-      job,
+    });
+
+    const job = this.jobRepository.create({
+      name,
+      currencyPair,
+      scheduleJob,
     });
 
     await getManager().transaction(async (transactionalEntityManager) => {
-      await transactionalEntityManager.save(job);
       await transactionalEntityManager.save(scheduleJob);
+      await transactionalEntityManager.save(job);
     });
 
-    return scheduleJob;
+    return job;
   }
 }
 
-export { SchedulesJobsService };
+export { JobsServices };
