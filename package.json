@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/brduarte/bit-bot-service#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "cron": "^1.8.2",
     "dotenv": "^9.0.2",

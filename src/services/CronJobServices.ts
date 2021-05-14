@@ -1,6 +1,7 @@
-import { CronJob, job } from "cron";
+import { CronJob } from "cron";
 import { getCustomRepository } from "typeorm";
 import { JobRepository } from "../repositorys/JobsRepository";
+import { ApiPoloniexServices } from "./api/ApiPoloniexServices";
 
 interface ICreateJob {
   frequency: Number;
@@ -9,17 +10,13 @@ interface ICreateJob {
 
 class CronJobServices {
   static start({ frequency, currencyPair }: ICreateJob): CronJob {
-    var job = new CronJob(
-      `0 ${frequency}/1 * * * *`,
-      function () {
-        console.log(`Você esta monitorando esta moeda===>`, currencyPair);
-        console.log(new Date());
-      },
-      null,
-      true
-    );
+    var job = new CronJob({
+      cronTime: `0 ${frequency}/1 * * * *`,
+      onTick: () => this.onTick(currencyPair),
+      runOnInit: true,
+      start: true,
+    });
 
-    job.start();
     return job;
   }
 
@@ -36,10 +33,18 @@ class CronJobServices {
         frequency: job.scheduleJob.frequency,
         currencyPair: job.currencyPair,
       });
-      console.log('JOB STARTED ==>', job.currencyPair);
+      console.log("JOB STARTED ==>", job.currencyPair);
     });
 
     return true;
+  }
+
+  static async onTick(currencyPair: any) {
+    const apiPoloniexServices = new ApiPoloniexServices();
+    const ticker = await apiPoloniexServices.returnTicker();
+    console.log(ticker[currencyPair]);
+    console.log(`Você esta monitorando esta moeda===>`, currencyPair);
+    console.log(new Date());
   }
 }
 
