@@ -11,9 +11,11 @@ class CronJobServices {
       `0 ${frequency}/1 * * * *`,
       function () {
         console.log(
-          `Você esta monitorando esta moeda===> `,
+          `Você esta monitorando esta moeda===>`,
           currencyPair
         );
+        console.log(new Date());
+        
       },
       null,
       true
