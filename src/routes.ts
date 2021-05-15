@@ -1,10 +1,12 @@
 import { Router } from "express";
 import { SchedulesJobsController } from "./controllers/SchedulesJobsController";
 
-const routes = Router();
+class Routers {
+  static routes = Router();
 
-const schedulesJobsController = new SchedulesJobsController()
+  static getRouter() {
+    this.routes.post("/jobs", new SchedulesJobsController().create);
+  }
+}
 
-routes.post("/jobs", schedulesJobsController.create);
-
-export { routes };
+export { Routers };

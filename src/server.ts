@@ -1,18 +1,24 @@
-import 'dotenv/config';
-import './database';
-
+import "dotenv/config";
 import express from "express";
-import { routes } from "./routes";
+import { connectionDB } from "./database";
 import { CronJobServices } from "./services/CronJobServices";
 
-const app = express();
+import { Routers } from "./routes";
 
-app.use(express.json());
-app.use(routes);
+connectionDB()
+  .then(() => {
+    const app = express();
 
-app.listen(3333, async () => {
-  console.log("Server is running on port http://localhost:3333");
-  // Essa função recupera os jobs agendados caso ocorra um reinicialização do sistema.
-  const cronJobServices = new CronJobServices();
-  await cronJobServices.toRecoverJobs();
-});
+    app.use(express.json());
+    app.use(Routers.getRouter);
+    app.listen(3333, async () => {
+      console.log("Server is running on port http://localhost:3333");
+      // Essa função recupera os jobs agendados caso ocorra um reinicialização do sistema.
+      const cronJobServices = new CronJobServices();
+      await cronJobServices.toRecoverJobs();
+    });
+  })
+  
+  .catch(() => {
+    console.error("Filid init server");
+  });
