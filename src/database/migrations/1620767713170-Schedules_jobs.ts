@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class SchedulesJobs1620768602670 implements MigrationInterface {
+export class SchedulesJobs1620767713170 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     queryRunner.createTable(
       new Table({
@@ -11,7 +11,6 @@ export class SchedulesJobs1620768602670 implements MigrationInterface {
             type: "varchar",
             isPrimary: true,
           },
-       
           {
             name: "frequency",
             type: "float",
@@ -24,13 +23,14 @@ export class SchedulesJobs1620768602670 implements MigrationInterface {
           {
             name: "updated_at",
             type: "datetime",
-            isNullable: true
+            isNullable: true,
           },
         ],
       })
-
     );
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {}
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    queryRunner.dropTable("schedules_jobs");
+  }
 }

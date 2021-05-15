@@ -1,14 +1,15 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateCandles1621018796179 implements MigrationInterface {
+export class CreateCandles1620767713171 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     queryRunner.createTable(
       new Table({
         name: "candles",
         columns: [
           {
-            name: "currency",
+            name: "id",
             type: "varchar",
+            isPrimary: true,
           },
           {
             name: "frequency",
@@ -34,13 +35,9 @@ export class CreateCandles1621018796179 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: "high",
-            type: "close",
+            name: "close",
+            type: "float",
             isNullable: true,
-          },
-          {
-            name: "job_id",
-            type: "varchar",
           },
           {
             name: "created_at",
@@ -51,13 +48,6 @@ export class CreateCandles1621018796179 implements MigrationInterface {
             name: "updated_at",
             type: "datetime",
             isNullable: true,
-          },
-        ],
-        foreignKeys: [
-          {
-            referencedTableName: "jobs",
-            referencedColumnNames: ["id"],
-            columnNames: ["job_id"],
           },
         ],
       })

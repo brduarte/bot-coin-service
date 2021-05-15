@@ -3,6 +3,8 @@ import { SchedulesJobsController } from "./controllers/SchedulesJobsController";
 
 const routes = Router();
 
-routes.post("/jobs", SchedulesJobsController.create);
+const schedulesJobsController = new SchedulesJobsController()
+
+routes.post("/jobs", schedulesJobsController.create);
 
 export { routes };

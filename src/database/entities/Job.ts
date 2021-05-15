@@ -8,6 +8,7 @@ import {
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { ScheduleJob } from "./ScheduleJob";
+import { Candles } from "./Candles";
 
 @Entity("jobs")
 class Job {
@@ -23,6 +24,10 @@ class Job {
   @JoinColumn({name: 'schedule_job_id'})
   @OneToOne(() => ScheduleJob, scheduleJob => scheduleJob.job)
   scheduleJob: ScheduleJob;
+
+  @JoinColumn({name: 'candle_id'})
+  @OneToOne(() => Candles, candles => candles.job)
+  candles: Candles;
 
   @CreateDateColumn()
   created_at: Date;
