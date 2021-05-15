@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateCandles1620767713171 implements MigrationInterface {
+export class CreateCandles1620768602670 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     queryRunner.createTable(
       new Table({
@@ -10,10 +10,6 @@ export class CreateCandles1620767713171 implements MigrationInterface {
             name: "id",
             type: "varchar",
             isPrimary: true,
-          },
-          {
-            name: "frequency",
-            type: "integer",
           },
           {
             name: "date",
@@ -40,6 +36,10 @@ export class CreateCandles1620767713171 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: "job_id",
+            type: "varchar",
+          },
+          {
             name: "created_at",
             type: "datetime",
             default: "now()",
@@ -48,6 +48,13 @@ export class CreateCandles1620767713171 implements MigrationInterface {
             name: "updated_at",
             type: "datetime",
             isNullable: true,
+          },
+        ],
+        foreignKeys: [
+          {
+            referencedTableName: "jobs",
+            referencedColumnNames: ["id"],
+            columnNames: ["job_id"],
           },
         ],
       })
