@@ -15,15 +15,12 @@ class SchedulesJobsController {
 
       const jobsServices = new JobsServices();
       const job = await jobsServices.create({
-        name: name,
-        currencyPair: currencyPair,
+        name,
+        currencyPair,
         frequency,
       });
 
-      this.cronJobServices.start({
-        frequency: job.scheduleJob.frequency,
-        currencyPair: job.currencyPair,
-      });
+      this.cronJobServices.start(job);
 
       return response.json({
         job,
