@@ -1,12 +1,8 @@
 import { Router } from "express";
 import { SchedulesJobsController } from "./controllers/SchedulesJobsController";
 
-class Routers {
-  static routes = Router();
+const routes = Router();
 
-  static getRouter() {
-    this.routes.post("/jobs", new SchedulesJobsController().create);
-  }
-}
+routes.post("/jobs", new SchedulesJobsController().create);
 
-export { Routers };
+export { routes };

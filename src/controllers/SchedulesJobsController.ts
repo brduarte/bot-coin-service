@@ -3,14 +3,9 @@ import { JobsServices } from "../services/JobsServices";
 import { CronJobServices } from "../services/CronJobServices";
 
 class SchedulesJobsController {
-  private cronJobServices: CronJobServices;
-
-  constructor() {
-    this.cronJobServices = new CronJobServices();
-  }
-
   async create(request: Request, response: Response): Promise<Response> {
     try {
+      const cronJobServices = new CronJobServices();
       const { name, currencyPair, frequency } = request.body;
 
       const jobsServices = new JobsServices();
@@ -20,7 +15,7 @@ class SchedulesJobsController {
         frequency,
       });
 
-      this.cronJobServices.start(job);
+      cronJobServices.start(job);
 
       return response.json({
         job,

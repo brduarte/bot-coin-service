@@ -3,6 +3,8 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
+  ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryColumn,
 } from "typeorm";
@@ -25,9 +27,8 @@ class Job {
   @OneToOne(() => ScheduleJob, scheduleJob => scheduleJob.job)
   scheduleJob: ScheduleJob;
 
-  @JoinColumn({name: 'candle_id'})
-  @OneToOne(() => Candles, candles => candles.job)
-  candles: Candles;
+  @OneToMany(() => Candles, candles => candles.job)
+  candles: [];
 
   @CreateDateColumn()
   created_at: Date;

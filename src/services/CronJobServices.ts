@@ -51,17 +51,18 @@ class CronJobServices {
 
     const candles = await this.candlesRepository.create({
       job: job,
-      frequency: job.scheduleJob.frequency,
       open: ticker[job.currencyPair].last,
       low: ticker[job.currencyPair].lowestAsk,
       high: ticker[job.currencyPair].highestBid,
       close: ticker[job.currencyPair].last,
     });
 
-    await this.candlesRepository.save(candles)
+    await this.candlesRepository.save(candles);
 
-    console.log(`Você esta monitorando essa moeda===>`, job.currencyPair);
-    console.log(new Date());
+    console.log(
+      `Você esta monitorando essa moeda===> ${new Date()}`,
+      job.currencyPair
+    );
   }
 }
 

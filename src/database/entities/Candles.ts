@@ -2,6 +2,8 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   OneToOne,
   PrimaryColumn,
 } from "typeorm";
@@ -12,9 +14,6 @@ import { Job } from "./Job";
 class Candles {
   @PrimaryColumn()
   id: string;
-
-  @Column()
-  frequency: number;
 
   @Column()
   date: Date;
@@ -30,8 +29,9 @@ class Candles {
 
   @Column()
   close: Number;
-
-  @OneToOne(() => Job, (job) => job.candles)
+  
+  @JoinColumn({name: 'job_id'})
+  @ManyToOne(() => Job, (job) => job.candles)
   job: Job;
 
   @CreateDateColumn()
