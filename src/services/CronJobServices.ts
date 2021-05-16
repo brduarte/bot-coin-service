@@ -21,10 +21,11 @@ class CronJobServices {
 
   start(job: Job): CronJob {
     var cronJob = new CronJob({
-      cronTime: `0 ${job.scheduleJob.frequency}/1 * * * *`,
+      cronTime: `0 0/${job.scheduleJob.frequency} * * * *`,
       onTick: () => this.onTick(job),
-      runOnInit: true,
+      runOnInit: false,
       start: true,
+      timeZone: 'America/Sao_Paulo'
     });
 
     return cronJob;
@@ -60,7 +61,7 @@ class CronJobServices {
     await this.candlesRepository.save(candles);
 
     console.log(
-      `Você esta monitorando essa moeda===> ${new Date()}`,
+      `Você esta monitorando essa moeda===> ${new Date()} - ${job.scheduleJob.frequency}`,
       job.currencyPair
     );
   }
