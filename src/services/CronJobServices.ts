@@ -5,11 +5,6 @@ import { CandlesRepository } from "../repositorys/CandlesRepository";
 import { JobRepository } from "../repositorys/JobsRepository";
 import { ApiPoloniexServices } from "./api/ApiPoloniexServices";
 
-interface ICreateJob {
-  frequency: Number;
-  currencyPair: String;
-}
-
 class CronJobServices {
   private jobRepository: JobRepository;
   private candlesRepository: CandlesRepository;
