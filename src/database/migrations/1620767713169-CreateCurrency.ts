@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateCurrency1621134945440 implements MigrationInterface {
+export class CreateCurrency1620767713169 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({

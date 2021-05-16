@@ -1,4 +1,5 @@
 import { getCustomRepository, getManager } from "typeorm";
+import { CurrencysRepository } from "../repositorys/CurrencysRepository";
 import { JobRepository } from "../repositorys/JobsRepository";
 import { SchedulesJobsRepository } from "../repositorys/SchedulesJobsRepository";
 
@@ -11,14 +12,31 @@ interface IJobCreate {
 class JobsServices {
   private jobRepository: JobRepository;
   private schedulesJobsRepository: SchedulesJobsRepository;
+  private currencysRepository: CurrencysRepository;
 
   constructor() {
     this.jobRepository = getCustomRepository(JobRepository);
     this.schedulesJobsRepository = getCustomRepository(SchedulesJobsRepository);
+    this.currencysRepository = getCustomRepository(CurrencysRepository);
   }
 
   async create({ name, currencyPair, frequency }: IJobCreate) {
-    const jobExists = await this.jobRepository.findJobByCurrencyAndFrequency({currencyPair,frequency})
+    const currencyExists = await this.currencysRepository.findOne({
+      where: {
+        currency_pair: currencyPair,
+      },
+    });
+
+    if (!currencyExists) {
+      throw new Error(
+        `Currency pair '${currencyPair}' is not known by the system`
+      );
+    }
+
+    const jobExists = await this.jobRepository.findJobByCurrencyAndFrequency({
+      currencyPair,
+      frequency,
+    });
 
     if (jobExists) {
       throw new Error(
@@ -32,7 +50,7 @@ class JobsServices {
 
     const job = this.jobRepository.create({
       name,
-      currencyPair,
+      currency: currencyExists,
       scheduleJob,
     });
 

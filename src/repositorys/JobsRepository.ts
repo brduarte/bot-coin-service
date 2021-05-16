@@ -7,7 +7,8 @@ class JobRepository extends Repository<Job> {
     try {
       const jobSchedule = await this.createQueryBuilder("job")
         .leftJoinAndSelect("job.scheduleJob", "scheduleJob")
-        .where("job.currencyPair=:currencyPair", { currencyPair })
+        .innerJoin("job.currency", "currency")
+        .where("currency.currency_pair=:currencyPair", { currencyPair })
         .andWhere("frequency=:frequency", { frequency })
         .getOne();
 

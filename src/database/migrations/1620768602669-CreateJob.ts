@@ -16,7 +16,7 @@ export class CreateJob1620768602669 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "currency_pair",
+            name: "currency_id",
             type: "varchar",
           },
           {
@@ -39,6 +39,11 @@ export class CreateJob1620768602669 implements MigrationInterface {
             referencedTableName: "schedules_jobs",
             referencedColumnNames: ["id"],
             columnNames: ["schedule_job_id"],
+          },
+          {
+            referencedTableName: "currencys",
+            referencedColumnNames: ["id"],
+            columnNames: ["currency_id"],
           },
         ],
       })

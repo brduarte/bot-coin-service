@@ -15,8 +15,8 @@ connectionDB()
     app.listen(3333, async () => {
       console.log("Server is running on port http://localhost:3333");
       // Essa função recupera os jobs agendados caso ocorra um reinicialização do sistema.
-      const cronJobServices = new CronJobServices();
-      await cronJobServices.toRecoverJobs();
+      // const cronJobServices = new CronJobServices();
+      // await cronJobServices.toRecoverJobs();
     });
   })
   .catch(() => {
