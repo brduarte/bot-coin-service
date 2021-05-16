@@ -13,21 +13,23 @@ class CronJobServices {
     this.jobRepository = getCustomRepository(JobRepository);
     this.candlesRepository = getCustomRepository(CandlesRepository);
   }
-  
+
   start(job: Job): CronJob {
     var cronJob = new CronJob({
       cronTime: `0 0/${job.scheduleJob.frequency} * * * *`,
       onTick: () => this.onTick(job),
       runOnInit: false,
       start: true,
-      timeZone: 'America/Sao_Paulo'
+      timeZone: "America/Sao_Paulo",
     });
 
     return cronJob;
   }
 
   async toRecoverJobs() {
-    const jobs = await this.jobRepository.find({ relations: ["scheduleJob"] });
+    const jobs = await this.jobRepository.find({
+      relations: ["scheduleJob", "currency"],
+    });
 
     if (!jobs.length) {
       return false;
@@ -35,7 +37,10 @@ class CronJobServices {
 
     jobs.forEach((job) => {
       this.start(job);
-      console.log("JOB STARTED ==>", job.currency.currency_pair);
+      console.log(
+        `JOB RESTARTED FREQUENCY ${job.scheduleJob.frequency}  ==>`,
+        job.currency.currency_pair
+      );
     });
 
     return true;
@@ -56,8 +61,7 @@ class CronJobServices {
     await this.candlesRepository.save(candles);
 
     console.log(
-      `Você esta monitorando essa moeda===> ${new Date()} - ${job.scheduleJob.frequency}`,
-      job.currency.currency_pair
+      `Moeda monitorada ===> ${job.currency.currency_pair} - FREQUENCY ${job.scheduleJob.frequency} - JOB NAME ${job.name}`
     );
   }
 }
