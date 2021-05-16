@@ -2,7 +2,7 @@
 
 - Query para buscar dados de um candles de um determinado JOB
 
-```
+```sql
 SELECT
 jobs.name,
 currencys.currency_pair,
