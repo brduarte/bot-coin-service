@@ -39,7 +39,7 @@ export class CreateJob1620768602669 implements MigrationInterface {
             referencedTableName: "schedules_jobs",
             referencedColumnNames: ["id"],
             columnNames: ["schedule_job_id"],
-          }
+          },
         ],
       })
     );
