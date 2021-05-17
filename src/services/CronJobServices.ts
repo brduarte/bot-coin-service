@@ -18,7 +18,7 @@ class CronJobServices {
     var cronJob = new CronJob({
       cronTime: `0 0/${job.scheduleJob.frequency} * * * *`,
       onTick: () => this.onTick(job),
-      runOnInit: true,
+      runOnInit: false,
       start: true,
       timeZone: "America/Sao_Paulo",
     });
