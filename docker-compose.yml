@@ -7,9 +7,9 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: bitbot
-      MYSQL_USER: bitbot
-      MYSQL_PASSWORD: bitbot
+      MYSQL_DATABASE: ${TYPEORM_DATABASE:-bitbot}
+      MYSQL_USER: ${TYPEORM_PASSWORD:-bitbot}
+      MYSQL_PASSWORD: ${TYPEORM_DATABASE:-bitbot}
     volumes:
       - ./.docker/db/bddata:/var/lib/mysql
       - ./.docker/db/bdimport:/docker-entrypoint-initdb.d
@@ -17,6 +17,8 @@ services:
       - 3309:3306
     networks:
       - mynetwork
+   
+  
 
 networks:
   mynetwork:
