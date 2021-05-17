@@ -13,12 +13,12 @@ connectionDB()
     app.use(routes);
 
     app.listen(process.env.APP_PORT, async () => {
-      console.log("Server is running on port http://localhost:3333");
+      console.log(`Server is running on port http://localhost:${process.env.APP_PORT}`);
       // Essa função recupera os jobs agendados caso ocorra um reinicialização do sistema.
       const cronJobServices = new CronJobServices();
       await cronJobServices.toRecoverJobs();
     });
   })
   .catch(() => {
-    console.error("Filid init server");
+    console.error("Failed init server");
   });

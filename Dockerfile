@@ -9,12 +9,11 @@ ARG TYPEORM_DATABASE=bitbot
 ARG TYPEORM_PORT=3309
 ARG TYPEORM_LOGGING=false
 
+WORKDIR /project
+
 ADD . .
 RUN npm install -g typescript
 RUN yarn install
-RUN /bin/sh -c tsc 
-
-WORKDIR /dist
 
 RUN echo APP_PORT=${APP_PORT} >> .env
 RUN echo BASE_URL_API_POLONIEX=${BASE_URL_API_POLONIEX} >> .env
@@ -25,7 +24,5 @@ RUN echo TYPEORM_DATABASE=${TYPEORM_DATABASE} >> .env
 RUN echo TYPEORM_PORT=${TYPEORM_PORT} >> .env
 RUN echo TYPEORM_LOGGING=${TYPEORM_LOGGING} >> .env
 
-RUN yarn typeorm migration:run
-
 EXPOSE $APP_PORT
-CMD node server.js
+CMD yarn start
