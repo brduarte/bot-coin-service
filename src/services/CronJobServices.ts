@@ -18,7 +18,7 @@ class CronJobServices {
     var cronJob = new CronJob({
       cronTime: `0 0/${job.scheduleJob.frequency} * * * *`,
       onTick: () => this.onTick(job),
-      runOnInit: false,
+      runOnInit: true,
       start: true,
       timeZone: "America/Sao_Paulo",
     });
@@ -49,16 +49,10 @@ class CronJobServices {
   private async onTick(job: Job) {
     const apiPoloniexServices = new ApiPoloniexServices();
 
-    let limitRequest = 6;
-    let open: number = 0.0;
-    let low: number = 0.0;
-    let high: number = 0.0;
-    let close: number = 0.0;
-
     const ticker = await apiPoloniexServices.returnTicker();
 
-    const candles = this.candlesRepository.create({
-      job: job,
+    let candles = this.candlesRepository.create({
+      job,
       open: ticker[job.currency.currency_pair].last,
       low: ticker[job.currency.currency_pair].lowestAsk,
       high: ticker[job.currency.currency_pair].highestBid,
@@ -70,17 +64,10 @@ class CronJobServices {
     console.log(
       `Moeda monitorada ===> ${job.currency.currency_pair} - FREQUENCY ${job.scheduleJob.frequency} - JOB NAME ${job.name}`
     );
-    await this.sleep(job.scheduleJob.frequency * 60);
-    console.log("oi bruno");
 
     return true;
   }
 
-  sleep(seconds: number): Promise<void> {
-    return new Promise((resolve) => {
-      setTimeout(resolve, seconds * 1000);
-    });
-  }
 }
 
 export { CronJobServices };
