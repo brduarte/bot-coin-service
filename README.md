@@ -19,5 +19,4 @@ JOIN currencys on jobs.currency_id = currencys.id
 JOIN schedules_jobs on jobs.schedule_job_id = schedules_jobs.id
 WHERE job_id=:job_id
 ORDER BY candles.created_at DESC
-
 ```
