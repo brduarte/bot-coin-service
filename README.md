@@ -1,17 +1,24 @@
-# Bot Coin Service 🤖
+# 🤖 Bot Coin Service 
 
 ## ⚒️ Ferramentas Utilizadas 
-  
   - Node.js
   - Express
   - TypeOrm 
   - Mysql
 
-## Executando com Docker 
+## ✔️ Pré-requisitos 
+  - Docker 
+  - Docker Composer 
 
+## 🐳  Executando com Docker
+
+1. Rode o comando `docker-compose up --build` e aguarde a inicialização do projeto.
 ```
 $ docker-compose up --build
 ```
+2. Depois que os container terminarem de subir basra acessar http://localhost:3333
+![image](https://user-images.githubusercontent.com/29002558/118587645-5a5b7f80-b773-11eb-8d93-42a41e4c7546.png)
+
 
 ## 👨‍💻 Executando Manualmente
 
@@ -52,13 +59,12 @@ $ yarn start
 
         ⚠️ OBS: A API será executada na porta parametrizada na variável `APP_PORT` do projeto. 
 
-![image](https://user-images.githubusercontent.com/29002558/112572587-3873fb00-8dc9-11eb-9312-18d29fc82591.png)
+![image](https://user-images.githubusercontent.com/29002558/118587645-5a5b7f80-b773-11eb-8d93-42a41e4c7546.png)
 
 ## 📝 Documentação 
 - [Documentação da API](https://documenter.getpostman.com/view/5528641/TzCHAqDw)
 - [Como Instalar o Docker/Docker Compose](https://docs.docker.com/engine/install/)
-- [Mocha](https://mochajs.org/)
-- [PostgreSQL](https://www.postgresql.org/)
+- [Mysql](https://www.mysql.com/)
 - [Node.js](https://nodejs.org/en/docs/)
 - [Express](https://expressjs.com/pt-br/)
 
