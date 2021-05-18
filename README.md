@@ -59,7 +59,7 @@ $ yarn start
 
 ![image](https://user-images.githubusercontent.com/29002558/118587645-5a5b7f80-b773-11eb-8d93-42a41e4c7546.png)
 
-## 👨🏽‍🏫 Como utilizar o Projeto
+## 👨🏽‍🏫 Como Utilizar o Projeto
 O projeto foi desenvolvido para monitorar e gerar dados do candles da criptomoeda que você cadastrar no sistema.
        
         ⚠️ O exempo mostrado aqui é para gerar um candles de 1 minuto
