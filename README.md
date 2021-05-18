@@ -60,15 +60,15 @@ $ yarn start
 ![image](https://user-images.githubusercontent.com/29002558/118587645-5a5b7f80-b773-11eb-8d93-42a41e4c7546.png)
 
 # 👨🏽‍🏫 Como utilizar o Projeto
-O projeto foi desenvolvido para monitorar e gerar dos dados do candles da criptomoeda que você cadastrar no sistema.
+O projeto foi desenvolvido para monitorar e gerar dados do candles da criptomoeda que você cadastrar no sistema.
        
         ⚠️ O exempo mostrado aqui é para gerar um candles de 1 minuto
 
 1. Cadastre um job para a moeda que você deseja monitorar. 
    - Parametros
         - **name**: Nome do JOB
-        - **currencyPair**: Par de moeda para monitoramento. É permitido apenas moedas listadas na pagina da [API Poloniex](https://docs.poloniex.com/#currency-pair-ids)
-        - **frequency**: Periodicidade para gerar os dados do candles. Essa informação e setada em minutos
+        - **currencyPair**: Par de moeda para monitoramento. É permitido apenas moedas listadas na página da [API Poloniex](https://docs.poloniex.com/#currency-pair-ids)
+        - **frequency**: Periodicidade para gerar os dados do candles. Essa informação é setada com valor em minutos
 
 ```sh
 curl --location -g --request POST '{{URL}}/jobs' \
@@ -78,15 +78,15 @@ curl --location -g --request POST '{{URL}}/jobs' \
     "frequency":1
 }'
 ```
-Assim que os sistema começar a gerar os dados, ele mostrara logs de processamento no terminal
+Assim que os sistema começar a gerar os dados, ele mostrará logs de processamento no terminal
 ![image](https://user-images.githubusercontent.com/29002558/118678327-4cd5e200-b7d3-11eb-98c8-4f033bfcd8a9.png)
 
-2. Depois que o cadastro for feito e os primeiros dados forem gerados, você pode obter os dados do `candles` atravez da endpoint abaixo.
+2. Depois que o cadastro for feito e os primeiros dados forem gerados, você pode obter os dados do `candles` através da endpoint abaixo.
 ```sh
 curl --location -g --request GET '{{URL}}/candles?currencyPair=BTC_BTS&frequency=1'
 ```
 
-3. Caso você queira fazer a consulta travez do banco de dados, basta você rodar a query abaixo passando o id do job cdastrado.
+3. Caso você queira fazer a consulta através do banco de dados, basta você rodar a query abaixo passando o id do job cadastrado.
 ```sql
 SELECT
 jobs.id as job_id,
@@ -106,9 +106,9 @@ WHERE job_id=:job_id
 ORDER BY candles.created_at DESC
 ```
 
-Você pode ver mais sobre os endpoints na  [Documentação da API](https://documenter.getpostman.com/view/5528641/TzRYbPov)
+Você pode ver mais sobre os endpoints na [Documentação da API](https://documenter.getpostman.com/view/5528641/TzRYbPov)
 
-## 🗄️ Diagra do Banco de Dados
+## 🗄️ Diagrama do Banco de Dados
 
 ![image](https://user-images.githubusercontent.com/29002558/118680273-f9649380-b7d4-11eb-8f69-3e948810e7a3.png)
 
