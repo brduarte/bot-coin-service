@@ -16,7 +16,7 @@
 ```
 $ docker-compose up --build
 ```
-2. Depois que os container terminarem de subir basra acessar http://localhost:3333
+2. Depois que os container terminarem de subir basta acessar http://localhost:3333
 ![image](https://user-images.githubusercontent.com/29002558/118587645-5a5b7f80-b773-11eb-8d93-42a41e4c7546.png)
 
 
