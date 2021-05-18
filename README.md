@@ -64,9 +64,9 @@ O projeto foi desenvolvido para monitorar e gerar dos dados do candles da cripto
 
 1. Cadastre um job para a moeda que você deseja monitorar. 
    - Parametros
-        - *name*: Nome do JOB
-        - *currencyPair*: Par de moeda para monitoramento. É permitido apenas moedas listadas na pagina da API [Poloniex](https://docs.poloniex.com/#currency-pair-ids)
-        - *frequency*: Periodicidade para gerar os dados do candles. Essa informação e setada em minutos
+        - **name**: Nome do JOB
+        - **currencyPair**: Par de moeda para monitoramento. É permitido apenas moedas listadas na pagina da [API Poloniex](https://docs.poloniex.com/#currency-pair-ids)
+        - **frequency**: Periodicidade para gerar os dados do candles. Essa informação e setada em minutos
 
 ```sh
 curl --location -g --request POST '{{URL}}/jobs' \
@@ -76,10 +76,6 @@ curl --location -g --request POST '{{URL}}/jobs' \
     "frequency":1
 }'
 ```
-
-
-
-
 
 
 ## 📝 Documentação 
