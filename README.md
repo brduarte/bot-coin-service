@@ -1,4 +1,4 @@
-# Bit Bot Service
+# Bot Bot Service
 
 - Query para buscar dados de um candles de um determinado JOB
 
