@@ -48,21 +48,13 @@ $ yarn start
 
 ![image](https://user-images.githubusercontent.com/29002558/112572587-3873fb00-8dc9-11eb-9312-18d29fc82591.png)
 
-
-
 ## 📝 Documentação 
-
 - [Documentação da API](https://documenter.getpostman.com/view/5528641/TzCHAqDw)
 - [Como Instalar o Docker/Docker Compose](https://docs.docker.com/engine/install/)
 - [Mocha](https://mochajs.org/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Node.js](https://nodejs.org/en/docs/)
 - [Express](https://expressjs.com/pt-br/)
-
-
-
-
-- Query para buscar dados de um candles de um determinado JOB
 
 ```sql
 SELECT
