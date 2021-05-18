@@ -78,7 +78,7 @@ curl --location -g --request POST '{{URL}}/jobs' \
     "frequency":1
 }'
 ```
-Assim que os sistema começar a gerar os dados ele mostrara logs de processamento no terminal
+Assim que os sistema começar a gerar os dados, ele mostrara logs de processamento no terminal
 ![image](https://user-images.githubusercontent.com/29002558/118678327-4cd5e200-b7d3-11eb-98c8-4f033bfcd8a9.png)
 
 2. Depois que o cadastro for feito, você pode obter os dados do `candles` atravez da endpoint abaixo.
