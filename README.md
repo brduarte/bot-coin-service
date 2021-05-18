@@ -43,7 +43,7 @@ $ cp -v .env.example .env
 $ docker-compose up server-mysql
 ```
 
-4. Rode as migrations para construir a estrutura do banco de dados
+4. Rode as migrations para construir a estrutura do banco de dados.
 ```console
 $ yarn typeorm migration:run
 ```
@@ -79,8 +79,7 @@ curl --location -g --request POST '{{URL}}/jobs' \
 }'
 ```
 
-2. Depois que o cadastro for feito, consulte as informações geradas para o `candles` atravez do proximo endpoint de consulta
-
+2. Depois que o cadastro for feito, consulte as informações geradas para o `candles` atravez do proximo endpoint de consulta.
 ```sh
 curl --location -g --request GET '{{URL}}/candles?currencyPair=BTC_BTS&frequency=1'
 ```
