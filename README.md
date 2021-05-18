@@ -59,7 +59,7 @@ $ yarn start
 
 ![image](https://user-images.githubusercontent.com/29002558/118587645-5a5b7f80-b773-11eb-8d93-42a41e4c7546.png)
 
-# Como utilizar o Projeto
+# 👨🏽‍🏫 Como utilizar o Projeto
 O projeto foi desenvolvido para monitorar e gerar dos dados do candles da criptomoeda que você cadastrar no sistema.
        
         ⚠️ O exempo mostrado aqui é para gerar um candles de 1 minuto
@@ -86,16 +86,7 @@ Assim que os sistema começar a gerar os dados, ele mostrara logs de processamen
 curl --location -g --request GET '{{URL}}/candles?currencyPair=BTC_BTS&frequency=1'
 ```
 
-Você pode ver mais sobre os endpoints na  [Documentação da API](https://documenter.getpostman.com/view/5528641/TzRYbPov)
-
-## 📝 Documentação 
-- [Documentação da API](https://documenter.getpostman.com/view/5528641/TzRYbPov)
-- [Como Instalar o Docker/Docker Compose](https://docs.docker.com/engine/install/)
-- [Mysql](https://www.mysql.com/)
-- [Node.js](https://nodejs.org/en/docs/)
-- [TypeOrm](https://typeorm.io/)
-- [Express](https://expressjs.com/pt-br/)
-
+3. Caso você queira fazer a consulta travez do banco de dados, basta você rodar a query abaixo passando o id do job cdastrado.
 ```sql
 SELECT
 jobs.id as job_id,
@@ -114,3 +105,14 @@ JOIN schedules_jobs on jobs.schedule_job_id = schedules_jobs.id
 WHERE job_id=:job_id
 ORDER BY candles.created_at DESC
 ```
+
+Você pode ver mais sobre os endpoints na  [Documentação da API](https://documenter.getpostman.com/view/5528641/TzRYbPov)
+
+## 📝 Documentação 
+- [Documentação da API](https://documenter.getpostman.com/view/5528641/TzRYbPov)
+- [Como Instalar o Docker/Docker Compose](https://docs.docker.com/engine/install/)
+- [Mysql](https://www.mysql.com/)
+- [Node.js](https://nodejs.org/en/docs/)
+- [TypeOrm](https://typeorm.io/)
+- [Express](https://expressjs.com/pt-br/)
+
