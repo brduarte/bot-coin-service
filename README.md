@@ -108,6 +108,11 @@ ORDER BY candles.created_at DESC
 
 Você pode ver mais sobre os endpoints na  [Documentação da API](https://documenter.getpostman.com/view/5528641/TzRYbPov)
 
+## 🗄️ Diagra do Banco de Dados
+
+![image](https://user-images.githubusercontent.com/29002558/118680273-f9649380-b7d4-11eb-8f69-3e948810e7a3.png)
+
+
 ## 📝 Documentação 
 - [Documentação da API](https://documenter.getpostman.com/view/5528641/TzRYbPov)
 - [Como Instalar o Docker/Docker Compose](https://docs.docker.com/engine/install/)
