@@ -62,10 +62,11 @@ $ yarn start
 ![image](https://user-images.githubusercontent.com/29002558/118587645-5a5b7f80-b773-11eb-8d93-42a41e4c7546.png)
 
 ## 📝 Documentação 
-- [Documentação da API](https://documenter.getpostman.com/view/5528641/TzCHAqDw)
+- [Documentação da API](https://documenter.getpostman.com/view/5528641/TzRYbPov)
 - [Como Instalar o Docker/Docker Compose](https://docs.docker.com/engine/install/)
 - [Mysql](https://www.mysql.com/)
 - [Node.js](https://nodejs.org/en/docs/)
+- [TypeOrm](https://typeorm.io/)
 - [Express](https://expressjs.com/pt-br/)
 
 ```sql
