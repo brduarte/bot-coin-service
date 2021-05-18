@@ -22,8 +22,6 @@ $ docker-compose up --build
 
 ## 👨‍💻 Executando Manualmente
 
-Assegure-se de ter [Node.js](http://nodejs.org/) instalado
-
 1. Clone seu repositório e instale as dependências  
 
 ```console
