@@ -1,6 +1,30 @@
 version: "3.1"
 
 services:
+ 
+  server:
+    image: "bit-bot"
+    build: ./
+    environment:
+      APP_PORT: ${APP_PORT:-3333}
+      BASE_URL_API_POLONIEX: ${BASE_URL_API_POLONIEX:-https://poloniex.com}
+      TYPEORM_CONNECTION: ${TYPEORM_CONNECTION:-mysql}
+      TYPEORM_HOST: ${TYPEORM_HOST:-server-mysql}
+      TYPEORM_USERNAME: ${TYPEORM_USERNAME:-bitbot}
+      TYPEORM_PASSWORD: ${TYPEORM_PASSWORD:-bitbot}
+      TYPEORM_DATABASE: ${TYPEORM_DATABASE:-bitbot}
+      TYPEORM_PORT: ${TYPEORM_PORT:-3306}
+      TYPEORM_LOGGING: ${TYPEORM_LOGGING:-false}
+      TYPEORM_ENTITIES: ${TYPEORM_ENTITIES:-./src/database/entities/*.ts}
+      TYPEORM_MIGRATIONS: ${TYPEORM_MIGRATIONS:-./src/database/migrations/*.ts}
+      TYPEORM_MIGRATIONS_DIR: ${TYPEORM_MIGRATIONS:-./src/database/migrations}
+    ports:
+      - ${APP_POR:-3333}:${APP_POR:-3333}
+    networks:
+      - mynetwork
+    depends_on:
+      - server-mysql
+
   server-mysql:
     image: mysql:8.0.25
     command: --default-authentication-plugin=mysql_native_password
@@ -17,25 +41,7 @@ services:
     networks:
       - mynetwork
 
-  server:
-    image: "bit-bot"
-    build: ./
-    environment:
-      APP_PORT: ${APP_PORT:-3333}
-      BASE_URL_API_POLONIEX: ${BASE_URL_API_POLONIEX:-https://poloniex.com}
-      TYPEORM_CONNECTION: ${TYPEORM_CONNECTION-:mysql}
-      TYPEORM_HOST: ${TYPEORM_HOST:-server-mysql}
-      TYPEORM_USERNAME: ${TYPEORM_USERNAME:-bitbot}
-      TYPEORM_PASSWORD: ${TYPEORM_PASSWORD:-bitbot}
-      TYPEORM_DATABASE: ${TYPEORM_DATABASE:-bitbot}
-      TYPEORM_PORT: ${TYPEORM_PORT:-3306}
-      TYPEORM_LOGGING: ${TYPEORM_LOGGING:-false}
-    ports:
-      - ${APP_POR:-3333}:${APP_POR:-3333}
-    networks:
-      - mynetwork
-    depends_on:
-      - server-mysql
+
 
 networks:
   mynetwork:
