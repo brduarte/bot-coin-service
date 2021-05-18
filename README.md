@@ -7,6 +7,12 @@
   - TypeOrm 
   - Mysql
 
+## Executando com Docker 
+
+```
+$ docker-compose up --build
+```
+
 ## 👨‍💻 Executando Manualmente
 
 Assegure-se de ter [Node.js](http://nodejs.org/) instalado
