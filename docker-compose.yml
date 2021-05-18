@@ -1,7 +1,7 @@
 version: "3.1"
 
 services:
-  mysql:
+  server-mysql:
     image: mysql:8.0.25
     command: --default-authentication-plugin=mysql_native_password
     environment:
@@ -22,20 +22,20 @@ services:
     build: ./
     environment:
       APP_PORT: ${APP_PORT:-3333}
-      BASE_URL_API_POLONIEX: ${BASE_URL_API_POLONIEX:-'https://poloniex.com'}
+      BASE_URL_API_POLONIEX: ${BASE_URL_API_POLONIEX:-https://poloniex.com}
       TYPEORM_CONNECTION: ${TYPEORM_CONNECTION-:mysql}
-      TYPEORM_HOST: ${TYPEORM_HOST:-mysql}
+      TYPEORM_HOST: ${TYPEORM_HOST:-server-mysql}
       TYPEORM_USERNAME: ${TYPEORM_USERNAME:-bitbot}
       TYPEORM_PASSWORD: ${TYPEORM_PASSWORD:-bitbot}
       TYPEORM_DATABASE: ${TYPEORM_DATABASE:-bitbot}
-      TYPEORM_PORT: ${TYPEORM_PORT:-3309}
+      TYPEORM_PORT: ${TYPEORM_PORT:-3306}
       TYPEORM_LOGGING: ${TYPEORM_LOGGING:-false}
     ports:
       - ${APP_POR:-3333}:${APP_POR:-3333}
     networks:
       - mynetwork
     depends_on:
-      - mysql
+      - server-mysql
 
 networks:
   mynetwork:

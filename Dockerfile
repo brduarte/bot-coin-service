@@ -2,17 +2,17 @@ FROM node:14.15.4
 
 ARG APP_PORT=3333
 ARG BASE_URL_API_POLONIEX='https://poloniex.com'
-ARG TYPEORM_HOST=mysql
+ARG TYPEORM_HOST=server-mysql
 ARG TYPEORM_USERNAME=bitbot
 ARG TYPEORM_PASSWORD=bitbot
 ARG TYPEORM_DATABASE=bitbot
-ARG TYPEORM_PORT=3309
+ARG TYPEORM_PORT=3306
 ARG TYPEORM_LOGGING=false
 
 WORKDIR /project
 
 ADD . .
-RUN npm install -g typescript
+RUN yarn add typescript
 RUN yarn install
 
 RUN echo APP_PORT=${APP_PORT} >> .env
@@ -25,4 +25,5 @@ RUN echo TYPEORM_PORT=${TYPEORM_PORT} >> .env
 RUN echo TYPEORM_LOGGING=${TYPEORM_LOGGING} >> .env
 
 EXPOSE $APP_PORT
-CMD yarn start
+
+CMD  yarn start
