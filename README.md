@@ -59,6 +59,26 @@ $ yarn start
 
 ![image](https://user-images.githubusercontent.com/29002558/118587645-5a5b7f80-b773-11eb-8d93-42a41e4c7546.png)
 
+# Como utilizar o Projeto
+O projeto foi desenvolvido para monitorar e gerar dos dados do candles da criptomoeda que você cadastrar no sistema.
+
+1. Cadastre um job para a moeda que você deseja monitorar.
+
+
+```sh
+curl --location -g --request POST '{{URL}}/jobs' \
+--data-raw '{
+    "name": "JOB_BNB-BTC 1M",
+    "currencyPair": "BTC_BTS",
+    "frequency":1
+
+}'
+```
+
+
+
+
+
 
 ## 📝 Documentação 
 - [Documentação da API](https://documenter.getpostman.com/view/5528641/TzRYbPov)
