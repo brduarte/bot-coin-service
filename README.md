@@ -61,6 +61,8 @@ $ yarn start
 
 # Como utilizar o Projeto
 O projeto foi desenvolvido para monitorar e gerar dos dados do candles da criptomoeda que você cadastrar no sistema.
+       
+        ⚠️ O exempo mostrado aqui é para gerar um candles de 1 minuto
 
 1. Cadastre um job para a moeda que você deseja monitorar. 
    - Parametros
@@ -76,6 +78,7 @@ curl --location -g --request POST '{{URL}}/jobs' \
     "frequency":1
 }'
 ```
+Depois que o cadastro for feito aguarde o tempo que você colocou no parametro `frequency`
 
 
 ## 📝 Documentação 
