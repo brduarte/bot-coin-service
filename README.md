@@ -7,6 +7,8 @@
   - TypeOrm 
   - Mysql
 
+## Executando Com Docker 
+
 ## 👨‍💻 Executando Manualmente
 
 Assegure-se de ter [Node.js](http://nodejs.org/) instalado
