@@ -78,11 +78,12 @@ curl --location -g --request POST '{{URL}}/jobs' \
     "frequency":1
 }'
 ```
-Depois que o cadastro for feito, e tempo cadastrado no parametro `frequency` tiver passado, você ja vai conseguir obter informações do candles atravez do proximo endpoint
+
+2. Depois que o cadastro for feito, consulte as informações geradas para o `candles` atravez do proximo endpoint de consulta
+
 ```sh
 curl --location -g --request GET '{{URL}}/candles?currencyPair=BTC_BTS&frequency=1'
 ```
-
 
 ## 📝 Documentação 
 - [Documentação da API](https://documenter.getpostman.com/view/5528641/TzRYbPov)
