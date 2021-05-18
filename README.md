@@ -7,7 +7,11 @@
   - TypeOrm 
   - Mysql
 
-## Executando Com Docker 
+## Executando com Docker 
+
+```
+$ docker-compose up --build
+```
 
 ## 👨‍💻 Executando Manualmente
 
