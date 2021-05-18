@@ -78,7 +78,10 @@ curl --location -g --request POST '{{URL}}/jobs' \
     "frequency":1
 }'
 ```
-Depois que o cadastro for feito aguarde o tempo que você colocou no parametro `frequency`
+Depois que o cadastro for feito, e tempo cadastrado no parametro `frequency` tiver passado, você ja vai conseguir obter informações do candles atravez do proximo endpoint
+```sh
+curl --location -g --request GET '{{URL}}/candles?currencyPair=BTC_BTS&frequency=1'
+```
 
 
 ## 📝 Documentação 
