@@ -114,7 +114,7 @@ Você pode ver mais sobre os endpoints na [Documentação da API](https://docume
 
 ## 👨🏿‍🔬 Melhorias 
 - [ ] [Melhorar Gerenciamento de JOBS de Monitoramento de Moedas](https://github.com/brduarte/bot-coin-service/issues/4)
-- [ ] [Construir Conexão de WebSocket para Enviar Informações do Candles](https://github.com/brduarte/bot-coin-service/issues/3)
+- [ ] [Construir Conexão de WebSocket para Envio de Informações do Candles](https://github.com/brduarte/bot-coin-service/issues/3)
 - [ ] [Padronizar Respostas de Erros](https://github.com/brduarte/bot-coin-service/issues/2)
 
 ## 📝 Documentação 
