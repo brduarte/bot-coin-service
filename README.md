@@ -112,6 +112,11 @@ Você pode ver mais sobre os endpoints na [Documentação da API](https://docume
 
 ![image](https://user-images.githubusercontent.com/29002558/118680273-f9649380-b7d4-11eb-8f69-3e948810e7a3.png)
 
+## Melhorias 
+- [ ] https://github.com/brduarte/bot-coin-service/issues/4
+- [ ] https://github.com/brduarte/bot-coin-service/issues/3
+- [ ] https://github.com/brduarte/bot-coin-service/issues/2
+- [ ] https://github.com/brduarte/bot-coin-service/issues/1
 
 ## 📝 Documentação 
 - [Documentação da API](https://documenter.getpostman.com/view/5528641/TzRYbPov)
