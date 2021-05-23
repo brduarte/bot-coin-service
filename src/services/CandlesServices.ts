@@ -8,10 +8,12 @@ class CandlesServices {
     this.candlesRepository = getCustomRepository(CandlesRepository);
   }
 
-  async getCandlesByCurrencyAndFrequency({ currencyPair, frequency }) {
+  async getCandlesByCurrencyAndFrequency({ currencyPair, frequency, skip, take }) {
     return await this.candlesRepository.getCandlesByCurrencyAndFrequency({
       currencyPair,
       frequency,
+      skip,
+      take
     });
   }
 }
